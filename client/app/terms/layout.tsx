@@ -1,0 +1,24 @@
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Terms of Service",
+  description:
+    "Read the SOCIO Terms of Service. These terms govern your access and use of the SOCIO campus event management platform at Christ University.",
+  openGraph: {
+    title: "Terms of Service | SOCIO",
+    description:
+      "Terms governing access and use of the SOCIO campus event management platform.",
+    url: "https://socio.christuniversity.in/terms",
+  },
+  alternates: {
+    canonical: "https://socio.christuniversity.in/terms",
+  },
+};
+
+export default function TermsLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return <>{children}</>;
+}

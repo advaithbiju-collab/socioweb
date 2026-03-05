@@ -3,6 +3,7 @@ import "./globals.css";
 import { AuthProvider } from "@/context/AuthContext";
 import NavigationBar from "./_components/NavigationBar";
 import ChatBot from "./_components/ChatBot";
+import { OrganizationJsonLd, WebsiteJsonLd } from "./_components/JsonLd";
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
 import { Toaster } from "react-hot-toast";
 import { unstable_cache } from "next/cache";
@@ -21,7 +22,76 @@ import {
 export const revalidate = 300; // Revalidate every 5 minutes
 
 export const metadata: Metadata = {
-  title: "SOCIO",
+  metadataBase: new URL("https://socio.christuniversity.in"),
+  title: {
+    default: "SOCIO – Campus Event Management Platform | Christ University",
+    template: "%s | SOCIO",
+  },
+  description:
+    "Discover, register, and manage campus events at Christ University. SOCIO is the all-in-one platform for fests, clubs, workshops, and more — built for students and organisers.",
+  keywords: [
+    "SOCIO",
+    "campus events",
+    "Christ University",
+    "event management",
+    "college fests",
+    "student events",
+    "event registration",
+    "university events",
+    "clubs",
+    "workshops",
+    "hackathons",
+    "cultural events",
+    "tech fests",
+    "campus life",
+  ],
+  authors: [{ name: "SOCIO Team" }],
+  creator: "SOCIO",
+  publisher: "SOCIO – Christ University",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    url: "https://socio.christuniversity.in",
+    siteName: "SOCIO",
+    title: "SOCIO – Campus Event Management Platform | Christ University",
+    description:
+      "Discover, register, and manage campus events at Christ University. Fests, clubs, workshops, hackathons and more — all in one place.",
+    images: [
+      {
+        url: "/images/withsocio.png",
+        width: 1200,
+        height: 630,
+        alt: "SOCIO – Campus Event Management Platform",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SOCIO – Campus Event Management Platform | Christ University",
+    description:
+      "Discover, register, and manage campus events at Christ University. Fests, clubs, workshops and more.",
+    images: ["/images/withsocio.png"],
+  },
+  alternates: {
+    canonical: "https://socio.christuniversity.in",
+  },
+  icons: {
+    icon: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
+  manifest: "/manifest.json",
+  category: "education",
 };
 
 const deriveTags = (event: FetchedEvent): string[] => {
@@ -203,6 +273,8 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <head>
+        <OrganizationJsonLd />
+        <WebsiteJsonLd />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/favicon.svg" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
