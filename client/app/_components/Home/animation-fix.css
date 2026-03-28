@@ -15,11 +15,17 @@
 }
 
 @keyframes word-highlight {
-  0%, 30%, 100% {
-    transform: translateY(0) scale(1);
+
+  0%,
+  30%,
+  100% {
+    top: 0px;
+    text-shadow: none;
   }
-  5%, 25% {
-    transform: translateY(-5px) scale(1.05);
-    filter: drop-shadow(0 0 8px rgba(255, 204, 0, 0.6));
+
+  5%,
+  25% {
+    top: -5px;
+    text-shadow: 0 0 12px rgba(255, 204, 0, 0.8), 0 0 4px rgba(255, 204, 0, 0.8);
   }
 }
